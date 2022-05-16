@@ -71,10 +71,18 @@
             </nav>
 
             <div class="main-content">
+                @if (session('msg'))
 
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('msg') }}
+
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            @endif
                 <div class="page-content">                   
                     @yield('content')
-                </div>           
+                </div>         
+                  
             
                 <section class="bg-footer pt-5">
                     <div class="container">

@@ -15,7 +15,8 @@ class HomeController extends Controller
 
     public function Salvar(Request $request)       
     {
-        return view('salvar');
+        $row =  licitacao::firstOrNew(['id'=>$request->id]);
+        return view('salvar', ['row'=>$row]);
     }
     public function Post(Request $request)          
     {
@@ -28,6 +29,11 @@ class HomeController extends Controller
 
 
        $licitacao->fill($request->all())->save();
-      return redirect()->route('home');
+      return redirect()->route('home')->with('msg', 'Efetuado, com sucesso!');
+    }
+    public function delete(Request $request)         
+    {
+        licitacao::find($request->id)->delete();
+        return redirect()->route('home')->with('msg', 'Exluido, com sucesso!');
     }
 }

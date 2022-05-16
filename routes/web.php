@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class, 'Index'])->name('home');
 Route::get('/salvar/{id?}',[HomeController::class, 'Salvar'])->name('salvar');
 Route::post('/salvar/{id?}',[HomeController::class, 'Post']);
+Route::get('delete/{id}', [HomeController::class, 'Delete'])->name('delete');
