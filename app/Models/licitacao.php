@@ -9,5 +9,5 @@ class licitacao extends Model
 {
     use HasFactory;
     protected $table = 'licitacoes';
-    protected $fillable = ['titulo', 'prazo', 'quantidade', 'observacao'];
+    protected $fillable = ['titulo', 'prazo', 'status', 'descricao', 'anexo'];
 }

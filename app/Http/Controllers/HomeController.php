@@ -20,15 +20,20 @@ class HomeController extends Controller
     }
     public function Post(Request $request)          
     {
-       if ($request->id==''){
-           $licitacao = new licitacao();
-       }
-       else {
-           $licitacao = licitacao::find($request->id);
-       }
+       ($request->id=='') ? $licitacao = new licitacao() : $licitacao = licitacao::find($request->id);
+      
+       $imput = $request->all();
+        // Image Upload
+        if($request->hasFile('anexo') && $request->file('anexo')->isValid()) 
+        {
+            $requestImage = $request->anexo;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $request->anexo->move(public_path('uploads/anexos'), $imageName);
+            $imput['anexo'] = $imageName;
+        }
 
-
-       $licitacao->fill($request->all())->save();
+       $licitacao->fill($imput)->save();
       return redirect()->route('home')->with('msg', 'Efetuado, com sucesso!');
     }
     public function delete(Request $request)         
