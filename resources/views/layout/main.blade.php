@@ -61,6 +61,8 @@
                         <ul class="navbar-nav mx-auto navbar-center">
                           <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
                           <li class="nav-item"><a href="{{route('salvar')}}" class="nav-link">Cadastrar</a></li>
+                          <li class="nav-item"><a href="{{route('salvar')}}" class="nav-link">Pré Cadastro</a></li>
+
                         </ul>
                     </div>
                     </navabar-collapse-->
